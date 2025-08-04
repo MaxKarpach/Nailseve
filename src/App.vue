@@ -5,10 +5,10 @@ import { RouterView } from 'vue-router';
 <template>
     <div class="wrapper">
     <header>
-     <p class="header__ref">Главная</p>
-     <p class="header__ref">Записаться</p>
-     <p class="header__ref">Портфолио</p>
-     <p class="header__ref">Отзывы</p>
+     <RouterLink class="header__ref" to="/">Главная</RouterLink>
+     <RouterLink class="header__ref" to="/booking">Записаться</RouterLink>
+     <RouterLink class="header__ref" to="/portfolio">Портфолио</RouterLink>
+     <RouterLink class="header__ref" to="/reviews">Отзывы</RouterLink>
     </header>
     <main>
     <RouterView></RouterView>
@@ -26,10 +26,14 @@ import { RouterView } from 'vue-router';
     padding: 0;
     font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   }
+  a{
+    text-decoration: none;
+    color: black;
+  }
   .wrapper{
     display: flex;
     flex-direction: column;
-    height: 1200px;
+    height: 100%;
     align-items: center;
   }
   header{
