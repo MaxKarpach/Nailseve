@@ -20,24 +20,25 @@
     </div>
 </template>
 
-<style scoped lang="css">
+<style scoped lang="scss">
 
-  .person{
+.person{
     display: flex;
     padding-top: 80px;
     width: 1400px;
     height: 400px;
     align-items: center;
     padding-left: 30px;
+    &__img{
+      height: 400px;
+      width: 400px;
+      margin-left: 200px;
+    }
+    &__text{
+      line-height: 30px;
+    }
   }
-  .person__img{
-    height: 400px;
-    width: 400px;
-    margin-left: 200px;
-  }
-  .person__text{
-    line-height: 30px;
-  }
+
   .address{
     margin-top: 100px;
     display: flex;
@@ -45,13 +46,14 @@
     padding-left: 30px;
     height: 400px;
     align-items: center;
+    &__img{
+      height: 400px;
+      width: 400px;
+      margin-left: 405px
+    }
+    &__text{
+      line-height: 30px;      
+    }
   }
-  .address__img{
-    height: 400px;
-    width: 400px;
-    margin-left: 405px
-  }
-  .address__text{
-    line-height: 30px;
-  }
+
 </style>

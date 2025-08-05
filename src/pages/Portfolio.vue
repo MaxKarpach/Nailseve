@@ -2,7 +2,7 @@
 </script>
 
 <template>
-    <div class="potrfolio">
+    <div class="portfolio">
         <div class="portfolio__item">
             <img src="/src/assets/n1.jpg" alt="" class="portfolio__item__img">
             <div class="portfolio__item__price">
@@ -49,53 +49,52 @@
 </template>
 
 <style scoped lang="scss">
-  .potrfolio{
+  .portfolio{
     width: 1300px;
     margin-top: 80px;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: auto auto auto;
     gap: 20px;
-  }
-  .portfolio__item{
-    display: flex;
-    flex-direction: column;
-    position: relative;
-    align-items: center;
-  }
-  .portfolio__item__img{
-    height: 340px;
-    width: 100%;
-  }
-  .portfolio__item__price{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 43px;
-    width: 100%;
-    border: 1px solid rgba(246, 245, 245, 0.966)y;
-    border-top: none;
-    background-color: rgba(246, 245, 245, 0.966);
-  }
-  .portfolio__item__description{
-    height: 30px;
-    width: 50%;
-    z-index: 100;
-    position: absolute;
-    margin-top: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-  .portfolio__item__description__button{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 14px;
-    color: white;
-    height: 25px;
-    border: 1px solid white;
-    border-radius: 7px;
-    padding: 0 10px;
+    &__item{
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      align-items: center;
+      &__img{
+        height: 340px;
+        width: 100%;      
+      }
+      &__price{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 43px;
+        width: 100%;
+        border: 1px solid rgba(246, 245, 245, 0.966)y;
+        border-top: none;
+        background-color: rgba(246, 245, 245, 0.966);        
+      }
+      &__description{
+         height: 30px;
+         width: 50%;
+         position: absolute;
+         margin-top: 20px;
+         display: flex;
+         align-items: center;
+         justify-content: space-between;
+         &__button{
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          font-size: 14px;
+          color: white;
+          height: 25px;
+          border: 1px solid white;
+          border-radius: 7px;
+          padding: 0 10px;
+         }
+      }
+    }
   }
 </style>

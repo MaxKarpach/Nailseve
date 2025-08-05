@@ -19,7 +19,7 @@ import { RouterView } from 'vue-router';
     </div>
 </template>
 
-<style lang="css">
+<style lang="scss">
   *{
     box-sizing: border-box;
     margin: 0;
@@ -35,30 +35,30 @@ import { RouterView } from 'vue-router';
     flex-direction: column;
     height: 100%;
     align-items: center;
-  }
-  header{
-  width: 100%;
-  height: 100px;
-  border-bottom: 1px solid teal;
-  display: flex;
-  align-items: center;
-  padding-left: 30px;
-  }
-  .header__ref{
-    margin-left: 20px;
-  }
-  .header__ref:first-child{
-    margin-left: 0;
-  }
-  footer{
-  width: 100%;
-  height: 100px;
-  border-top: 1px solid teal;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  }
-  main{
-    height: 1000px;
+    header{
+     width: 100%;
+     height: 100px;
+     border-bottom: 1px solid teal;
+     display: flex;
+     align-items: center;
+     padding-left: 30px;
+     .header__ref{
+      margin-left: 20px;
+      &:first-child{
+        margin-left: 0;
+      }
+     }
+    }
+    footer{
+     width: 100%;
+     height: 100px;
+     border-top: 1px solid teal;
+     display: flex;
+     align-items: center;
+     justify-content: center;
+    }
+    main{
+     height: 1000px;
+    }
   }
 </style>
