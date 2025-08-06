@@ -34,7 +34,6 @@ import { RouterView } from 'vue-router';
     display: flex;
     flex-direction: column;
     height: 100%;
-    align-items: center;
     header{
      width: 100%;
      height: 100px;
@@ -59,6 +58,9 @@ import { RouterView } from 'vue-router';
     }
     main{
      height: 1000px;
+     display: flex;
+     flex-direction: column;
+     align-items: center;
     }
   }
 </style>
