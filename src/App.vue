@@ -30,6 +30,9 @@ import { RouterView } from 'vue-router';
     text-decoration: none;
     color: black;
   }
+  input, textarea:focus {
+  outline: none;
+  }
   .wrapper{
     display: flex;
     flex-direction: column;
