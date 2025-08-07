@@ -33,6 +33,9 @@ import { RouterView } from 'vue-router';
   input, textarea:focus {
   outline: none;
   }
+  button{
+    cursor: pointer;
+  }
   .wrapper{
     display: flex;
     flex-direction: column;

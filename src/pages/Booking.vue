@@ -67,6 +67,9 @@
             </div>
         </div>
     </div>
+    <button>
+        Записаться
+    </button>
 </template>
 
 <style scoped lang="scss">
@@ -116,6 +119,16 @@
 }
 
 h1{
+    margin-top: 40px;
+}
+
+button{
+    border-radius: 7px;
+    border: 1px solid teal;
+    height: 60px;
+    background-color: inherit;
+    width: 30%;   
+    font-size: 30px;
     margin-top: 40px;
 }
 
