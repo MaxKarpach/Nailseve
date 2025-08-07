@@ -63,7 +63,7 @@ import { RouterView } from 'vue-router';
      justify-content: center;
     }
     main{
-     height: 1000px;
+     height: 1200px;
      display: flex;
      flex-direction: column;
      align-items: center;
