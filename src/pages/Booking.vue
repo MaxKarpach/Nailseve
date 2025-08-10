@@ -1,64 +1,65 @@
-<script setup lang="ts">
+<script lang="ts">
+export default {
+    data() {
+        return {
+            services: [
+                { id: 1, name: 'Маникюр', items: [{ id: 1, title: 'Снятие + Маникюр + Покрытие гель-лаком', price: '2 700 ₽', serviceId: 1}] },
+                { id: 2, name: 'Дизайн', items: [{ id: 2, title: 'Дизайн 300', price: '300 ₽', serviceId: 2}] },
+                { id: 3, name: 'Покрытие, снятие', items: [{ id: 3, title: 'Покрытие гель-лак', price: '1 200 ₽', serviceId: 3}] },   
+                { id: 4, name: 'Наращивание, укрепление', items: [{ id: 4, title: 'Наращивание ногтей', price: '2 500 ₽', serviceId: 4}] },       
+            ],
+            dates: [
+                { id: 1, date: '11.08' }, { id: 2, date: '12.08' }, { id: 3, date: '13.08' },
+                { id: 4, date: '14.08' }, { id: 5, date: '15.08' }, { id: 6, date: '16.08' },
+                { id: 7, date: '17.08' }, { id: 8, date: '18.08' }, { id: 9, date: '19.08'}                  
+            ],
+            times: [
+                { id: 1, date: '11:00' }, { id: 2, date: '11:45' }, { id: 3, date: '13:30' },
+                { id: 4, date: '14:10' }, { id: 5, date: '15:00' }, { id: 6, date: '16:45'},
+                { id: 7, date: '17:00'}, { id: 8, date: '18:10'},{ id: 9, date: '19:05'}          
+            ],
+            chosenServices: [] as number[],
+            chosenDate: 0,
+            chosenTime: 0
+        }
+    },
+    methods: {
+        changeChosenServices(itemId: number) {
+        this.chosenServices.includes(itemId)
+        ? this.chosenServices = this.chosenServices.filter(id => id !== itemId)
+        : this.chosenServices.push(itemId)
+        },
+        setChosenDate(dateId: number) {
+            this.chosenDate = this.chosenDate === dateId ? 0 : dateId
+        },
+        setChosenTime(timeId: number) {
+            this.chosenTime = this.chosenTime === timeId ? 0 : timeId
+        },
+        book() {
+            this.chosenServices = []
+            this.chosenDate = 0
+            this.chosenTime = 0
+        }
+    }
+}
 </script>
 
 <template>
+    <form @submit.prevent>
     <h1>Выберите</h1>
     <div class="services">
-        <div class="services__item">
-            <p class="services__item-title">Маникюр</p>
+        <div class="services__item" v-for="service in services" :key="service.id">
+            <p class="services__item-title">{{service.name}}</p>
             <div class="services__item-container">
-               <div class="services__item-container__info">
+               <div class="services__item-container__info"  v-for="item in service.items" :key="item.id">
                 <div class="services__item-container__info__info">
-                    <div class="services__item-container__info__info__name">Снятие + Маникюр + Покрытие гель-лаком</div>
-                    <div class="services__item-container__info__info__price">2 700 ₽</div>
+                    <div class="services__item-container__info__info__name">{{item.title}}</div>
+                    <div class="services__item-container__info__info__price">{{item.price}}</div>
                 </div>
-                <div class="services__item-container__info__checkbox">
-                <img class="services__item-container__info__checkbox__img" src="/src/assets/check.png" alt="">
+                <div class="services__item-container__info__checkbox" v-on:click="changeChosenServices(item.id)">
+                <img v-show="chosenServices.includes(item.id)" class="services__item-container__info__checkbox__img" src="/src/assets/check.png" alt="">
                 </div>
-                </div>
-                
-            </div>
-        </div>
-        <div class="services__item">
-            <p class="services__item-title">Дизайн</p>
-            <div class="services__item-container">
-               <div class="services__item-container__info">
-                <div class="services__item-container__info__info">
-                    <div class="services__item-container__info__info__name">Дизайн 300</div>
-                    <div class="services__item-container__info__info__price">300 ₽</div>
-                </div>
-                <div class="services__item-container__info__checkbox">
-                    <img class="services__item-container__info__checkbox__img" src="/src/assets/check.png" alt="">
-                </div>
-                </div>
-            </div>
-        </div>
-        <div class="services__item">
-            <p class="services__item-title">Покрытие, снятие</p>
-            <div class="services__item-container">
-               <div class="services__item-container__info">
-                <div class="services__item-container__info__info">
-                    <div class="services__item-container__info__info__name">Покрытие гель-лак</div>
-                    <div class="services__item-container__info__info__price">1 200 ₽</div>
-                </div>
-                <div class="services__item-container__info__checkbox">
-                    <img class="services__item-container__info__checkbox__img" src="/src/assets/check.png" alt="">
-                </div>
-                </div>
-            </div>
-        </div>
-        <div class="services__item">
-            <p class="services__item-title">Наращивание, укрепление</p>
-            <div class="services__item-container">
-               <div class="services__item-container__info">
-                <div class="services__item-container__info__info">
-                    <div class="services__item-container__info__info__name">Наращивание ногтей</div>
-                    <div class="services__item-container__info__info__price">2 500 ₽</div>
-                </div>
-                <div class="services__item-container__info__checkbox">
-                    <img class="services__item-container__info__checkbox__img" src="/src/assets/check.png" alt="">
-                </div>
-                </div>
+                </div>   
             </div>
         </div>
     </div>
@@ -67,75 +68,36 @@
             Выберите дату
         </p>
         <div class="date__container">
-            <div class="date__container__item">
-                11.08
-            </div>
-            <div class="date__container__item">
-                12.08
-            </div>
-            <div class="date__container__item">
-                13.08
-            </div>
-                        <div class="date__container__item">
-                14.08
-            </div>
-            <div class="date__container__item">
-                15.08
-            </div>
-            <div class="date__container__item">
-                16.08
-            </div>
-               <div class="date__container__item">
-                17.08
-            </div>
-            <div class="date__container__item">
-                18.08
-            </div>
-            <div class="date__container__item">
-                19.08
+            <div class="date__container__item"  v-for="date in dates" :key="date.id" v-on:click="setChosenDate(date.id)"
+            :class="{ active: chosenDate === date.id }">
+                {{date.date}}
             </div>
         </div>
     </div>
-        <div class="date">
+    <div class="date">
         <p class="date__title">
             Выберите время
         </p>
         <div class="date__container">
-            <div class="date__container__item">
-                11:00
-            </div>
-            <div class="date__container__item">
-                11:45
-            </div>
-            <div class="date__container__item">
-                13:00
-            </div>
-            <div class="date__container__item">
-                14:00
-            </div>
-            <div class="date__container__item">
-                15:00
-            </div>
-            <div class="date__container__item">
-                16:00
-            </div>
-               <div class="date__container__item">
-                17:45
-            </div>
-            <div class="date__container__item">
-                18:10
-            </div>
-            <div class="date__container__item">
-                19:05
+            <div class="date__container__item"  v-for="time in times" :key="time.id" v-on:click="setChosenTime(time.id)"
+            :class="{ active: chosenTime === time.id }">
+                {{time.date}}
             </div>
         </div>
     </div>
-    <button>
+    <button v-on:click="book()">
         Записаться
     </button>
+    </form>
 </template>
 
 <style scoped lang="scss">
+form{
+    width: 1300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 .date{
     width: 500px;
     margin-top: 80px;
@@ -160,6 +122,11 @@
         border-radius: 7px;
         width: 70px;
         height: 30px;
+        &.active {
+        background-color: teal;
+        color: white;
+        border-color: teal;
+      }
     }
     }
 }
@@ -196,13 +163,13 @@
            height: 20px;
            width: 20px;
            border: 1px solid teal;
+           cursor: pointer;
            border-radius: 5px; 
            display: flex;
            justify-content: center;
            align-items: center;
            &__img{
             height: 10px;
-            display: none;
            }
         }      
         &__info__price{
