@@ -1,4 +1,6 @@
 <script lang="ts">
+import type { IDate } from '../models/date'
+import type { IService } from '../models/service'
 export default {
     data() {
         return {
@@ -7,17 +9,17 @@ export default {
                 { id: 2, name: 'Дизайн', items: [{ id: 2, title: 'Дизайн 300', price: '300 ₽', serviceId: 2}] },
                 { id: 3, name: 'Покрытие, снятие', items: [{ id: 3, title: 'Покрытие гель-лак', price: '1 200 ₽', serviceId: 3}] },   
                 { id: 4, name: 'Наращивание, укрепление', items: [{ id: 4, title: 'Наращивание ногтей', price: '2 500 ₽', serviceId: 4}] },       
-            ],
+            ] as IService[],
             dates: [
                 { id: 1, date: '11.08' }, { id: 2, date: '12.08' }, { id: 3, date: '13.08' },
                 { id: 4, date: '14.08' }, { id: 5, date: '15.08' }, { id: 6, date: '16.08' },
                 { id: 7, date: '17.08' }, { id: 8, date: '18.08' }, { id: 9, date: '19.08'}                  
-            ],
+            ] as IDate[],
             times: [
                 { id: 1, date: '11:00' }, { id: 2, date: '11:45' }, { id: 3, date: '13:30' },
                 { id: 4, date: '14:10' }, { id: 5, date: '15:00' }, { id: 6, date: '16:45'},
                 { id: 7, date: '17:00'}, { id: 8, date: '18:10'},{ id: 9, date: '19:05'}          
-            ],
+            ] as IDate[],
             chosenServices: [] as number[],
             chosenDate: 0,
             chosenTime: 0
