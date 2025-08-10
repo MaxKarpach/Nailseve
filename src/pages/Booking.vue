@@ -8,7 +8,7 @@ export default {
                 { id: 1, name: 'Маникюр', items: [{ id: 1, title: 'Снятие + Маникюр + Покрытие гель-лаком', price: '2 700 ₽', serviceId: 1}] },
                 { id: 2, name: 'Дизайн', items: [{ id: 2, title: 'Дизайн 300', price: '300 ₽', serviceId: 2}] },
                 { id: 3, name: 'Покрытие, снятие', items: [{ id: 3, title: 'Покрытие гель-лак', price: '1 200 ₽', serviceId: 3}] },   
-                { id: 4, name: 'Наращивание, укрепление', items: [{ id: 4, title: 'Наращивание ногтей', price: '2 500 ₽', serviceId: 4}] },       
+                { id: 4, name: 'Наращивание, укрепление', items: [{ id: 4, title: 'Наращивание ногтей', price: '2 500 ₽', serviceId: 4 }] },      
             ] as IService[],
             dates: [
                 { id: 1, date: '11.08' }, { id: 2, date: '12.08' }, { id: 3, date: '13.08' },
@@ -21,27 +21,27 @@ export default {
                 { id: 7, date: '17:00'}, { id: 8, date: '18:10'},{ id: 9, date: '19:05'}          
             ] as IDate[],
             chosenServices: [] as number[],
-            chosenDate: 0,
-            chosenTime: 0
+            chosenDate: 0 as number,
+            chosenTime: 0 as number
         }
     },
     methods: {
-        changeChosenServices(itemId: number) {
+        changeChosenServices(itemId: number): void {
         this.chosenServices.includes(itemId)
         ? this.chosenServices = this.chosenServices.filter(id => id !== itemId)
         : this.chosenServices.push(itemId)
         },
-        setChosenDate(dateId: number) {
+        setChosenDate(dateId: number): void {
             this.chosenDate = this.chosenDate === dateId ? 0 : dateId
         },
-        setChosenTime(timeId: number) {
+        setChosenTime(timeId: number): void {
             this.chosenTime = this.chosenTime === timeId ? 0 : timeId
         },
-        book() {
+        book() : void {
             this.chosenServices = []
             this.chosenDate = 0
             this.chosenTime = 0
-        }
+        },
     }
 }
 </script>
