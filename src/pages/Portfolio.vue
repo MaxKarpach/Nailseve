@@ -1,49 +1,31 @@
-<script setup lang="ts">
+<script lang="ts">
+import type { IPortfolioItem } from '../models/portfolioItem';
+
+export default {
+  data() {
+    return {
+      works: [
+        { id: 1, img: '/src/assets/n1.jpg', price: 500, description: [{ id: 1, text: 'Повседневный' }, { id: 2, text: 'French' }] },
+        { id: 2, img: '/src/assets/n2.jpg', price: 300, description: [{ id: 3, text: 'Летний' }, { id: 4, text: 'Минимализм' }] },
+        { id: 3, img: '/src/assets/n3.jpg', price: 1000, description: [{ id: 3, text: 'Летний' }, { id: 5, text: 'Худ. роспись' }] }                
+      ] as IPortfolioItem[]
+    }
+  }
+}
 </script>
 
 <template>
     <div class="portfolio">
-        <div class="portfolio__item">
-            <img src="/src/assets/n1.jpg" alt="" class="portfolio__item__img">
+        <div class="portfolio__item"  v-for="work in works" :key="work.id">
+            <img :src="work.img" alt="" class="portfolio__item__img">
             <div class="portfolio__item__price">
-                Цена: 500 ₽
+                Цена: {{ work.price }} ₽
             </div>
             <div class="portfolio__item__description">
-              <div class="portfolio__item__description__button">
-                Повседневный
-              </div>
-              <div class="portfolio__item__description__button">
-                French
+              <div class="portfolio__item__description__button" v-for="descr in work.description" :key="descr.id">
+                {{descr.text}}
               </div>
             </div>
-        </div>
-        <div class="portfolio__item">
-            <img src="/src/assets/n2.jpg" alt="" class="portfolio__item__img">  
-            <div class="portfolio__item__price">
-                Цена: 300 ₽
-            </div>  
-            <div class="portfolio__item__description">
-              <div class="portfolio__item__description__button">
-                Летний
-              </div>
-              <div class="portfolio__item__description__button">
-                Минимализм
-              </div>
-            </div>       
-        </div>
-        <div class="portfolio__item">
-            <img src="/src/assets/n3.jpg" alt="" class="portfolio__item__img">
-            <div class="portfolio__item__price">
-                Цена: 1000 ₽
-            </div>  
-                        <div class="portfolio__item__description">
-              <div class="portfolio__item__description__button">
-                Летний
-              </div>
-              <div class="portfolio__item__description__button">
-                Худ. роспись
-              </div>
-            </div>          
         </div>
     </div>
 </template>

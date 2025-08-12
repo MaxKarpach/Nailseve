@@ -1,6 +1,6 @@
 export interface IServiceItem{
     id: number
     title: string
-    price: string
+    price: number
     serviceId: number
 }

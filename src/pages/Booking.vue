@@ -5,10 +5,10 @@ export default {
     data() {
         return {
             services: [
-                { id: 1, name: 'Маникюр', items: [{ id: 1, title: 'Снятие + Маникюр + Покрытие гель-лаком', price: '2 700 ₽', serviceId: 1}] },
-                { id: 2, name: 'Дизайн', items: [{ id: 2, title: 'Дизайн 300', price: '300 ₽', serviceId: 2}] },
-                { id: 3, name: 'Покрытие, снятие', items: [{ id: 3, title: 'Покрытие гель-лак', price: '1 200 ₽', serviceId: 3}] },   
-                { id: 4, name: 'Наращивание, укрепление', items: [{ id: 4, title: 'Наращивание ногтей', price: '2 500 ₽', serviceId: 4 }] },      
+                { id: 1, name: 'Маникюр', items: [{ id: 1, title: 'Снятие + Маникюр + Покрытие гель-лаком', price: 2700, serviceId: 1}] },
+                { id: 2, name: 'Дизайн', items: [{ id: 2, title: 'Дизайн 300', price: 300, serviceId: 2}] },
+                { id: 3, name: 'Покрытие, снятие', items: [{ id: 3, title: 'Покрытие гель-лак', price: 1200, serviceId: 3}] },   
+                { id: 4, name: 'Наращивание, укрепление', items: [{ id: 4, title: 'Наращивание ногтей', price: 2500, serviceId: 4 }] },      
             ] as IService[],
             dates: [
                 { id: 1, date: '11.08' }, { id: 2, date: '12.08' }, { id: 3, date: '13.08' },
@@ -56,7 +56,7 @@ export default {
                <div class="services__item-container__info"  v-for="item in service.items" :key="item.id">
                 <div class="services__item-container__info__info">
                     <div class="services__item-container__info__info__name">{{item.title}}</div>
-                    <div class="services__item-container__info__info__price">{{item.price}}</div>
+                    <div class="services__item-container__info__info__price">{{item.price}} ₽</div>
                 </div>
                 <div class="services__item-container__info__checkbox" v-on:click="changeChosenServices(item.id)">
                 <img v-show="chosenServices.includes(item.id)" class="services__item-container__info__checkbox__img" src="/src/assets/check.png" alt="">

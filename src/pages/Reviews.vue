@@ -1,8 +1,24 @@
-<script setup lang="ts">
+<script lang="ts">
+import type { IReview } from '../models/review';
+
+export default {
+    data() {
+        return {
+            reviews: [
+                {id: 1, name: 'Коля Валуев', mark: 5, text: 'Пришла в салон впервые по рекомендации подруги и осталась в полном восторге! Мастер Катерина — настоящий профессионал: аккуратная, внимательная к деталям и с отличным чувством стиля.'}
+            ] as IReview[]
+        }
+    },
+    methods: {
+        sendReview(): void {
+
+        }
+    }
+}
 </script>
 
 <template>
-    <form class="add">
+    <form class="add" @submit.prevent>
         <input type="text" class="add__name" placeholder="Ваше имя"/>
         <input type="text" class="add__rating" placeholder="Оценка(1-5)"/>
         <textarea name="add__text" id="" class="add__text" placeholder="Комментарий"></textarea>
@@ -11,14 +27,13 @@
         </button>
     </form>
     <div class="reviews">
-        <div class="reviews__item">
+        <div class="reviews__item" v-for="review in reviews" :key="review.id">
             <div class="reviews__item__info">
-                <div class="reviews__item__info__name">Коля Валуев</div>
-                <img class="reviews__item__info__rating" src="/src/assets/star.png" alt=""/>
+                <div class="reviews__item__info__name">{{review.name}}</div>
+                <img v-for="star in review.mark" class="reviews__item__info__rating" src="/src/assets/star.png" alt=""/>
             </div>
             <div class="reviews__item__text">
-                Пришла в салон впервые по рекомендации подруги и осталась в полном восторге! 
-                Мастер Катерина — настоящий профессионал: аккуратная, внимательная к деталям и с отличным чувством стиля.
+                {{ review.text }}
             </div>
         </div>
     </div>
