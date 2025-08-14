@@ -2,16 +2,10 @@
 import type { IReview } from '../models/review'
 
 export default {
-    data() {
-        return {
-            reviews: [
-                {id: 1, name: 'Коля Валуев', mark: 5, text: 'Пришла в салон впервые по рекомендации подруги и осталась в полном восторге! Мастер Катерина — настоящий профессионал: аккуратная, внимательная к деталям и с отличным чувством стиля.'}
-            ] as IReview[]
-        }
-    },
-    methods: {
-        sendReview(): void {
-
+    props: {
+        reviews: {
+            type: Array as () => IReview[],
+            required: true
         }
     }
 }

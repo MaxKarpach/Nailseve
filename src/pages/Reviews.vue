@@ -23,8 +23,8 @@ export default {
 </script>
 
 <template>
-    <review-form/>
-    <review-list/>
+    <review-form @send-review="sendReview"/>
+    <review-list :reviews="reviews"/>
 </template>
 
 <style scoped lang="scss">

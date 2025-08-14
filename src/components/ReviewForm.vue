@@ -2,18 +2,7 @@
 import type { IReview } from '../models/review'
 
 export default {
-    data() {
-        return {
-            reviews: [
-                {id: 1, name: 'Коля Валуев', mark: 5, text: 'Пришла в салон впервые по рекомендации подруги и осталась в полном восторге! Мастер Катерина — настоящий профессионал: аккуратная, внимательная к деталям и с отличным чувством стиля.'}
-            ] as IReview[]
-        }
-    },
-    methods: {
-        sendReview(): void {
-
-        }
-    }
+    emits: ['send-review']
 }
 </script>
 
@@ -22,7 +11,7 @@ export default {
         <input type="text" class="add__name" placeholder="Ваше имя"/>
         <input type="text" class="add__rating" placeholder="Оценка(1-5)"/>
         <textarea name="add__text" id="" class="add__text" placeholder="Комментарий"></textarea>
-        <button class="add__button">
+        <button @click="$emit('send-review')" class="add__button">
             Отправить
         </button>
     </form>
