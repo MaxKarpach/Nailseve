@@ -1,21 +1,17 @@
 <script lang="ts">
 import type { IDate } from '../models/date'
 export default {
-    data() {
-        return {
-            times: [
-                { id: 1, date: '11:00' }, { id: 2, date: '11:45' }, { id: 3, date: '13:30' },
-                { id: 4, date: '14:10' }, { id: 5, date: '15:00' }, { id: 6, date: '16:45'},
-                { id: 7, date: '17:00'}, { id: 8, date: '18:10'},{ id: 9, date: '19:05'}          
-            ] as IDate[],
-            chosenTime: 0 as number
-        }
+    props: {
+    times: {
+      type: Array as () => IDate[],
+      required: true
     },
-    methods: {
-        setChosenTime(timeId: number): void {
-            this.chosenTime = this.chosenTime === timeId ? 0 : timeId
-        },
+    chosenTime: {
+      type: Number,
+      required: true
     }
+  },
+emits: ['set-time']
 }
 </script>
 
@@ -25,7 +21,8 @@ export default {
             Выберите время
         </p>
         <div class="date__container">
-            <div class="date__container__item"  v-for="time in times" :key="time.id" v-on:click="setChosenTime(time.id)"
+            <div class="date__container__item"  v-for="time in times" :key="time.id"
+              @click="$emit('set-time', time.id)"            
             :class="{ active: chosenTime === time.id }">
                 {{time.date}}
             </div>

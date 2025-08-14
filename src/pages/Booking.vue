@@ -44,7 +44,7 @@ export default {
         setChosenTime(timeId: number): void {
             this.chosenTime = this.chosenTime === timeId ? 0 : timeId
         },
-        book() : void {
+        book(): void {
             this.chosenServices = []
             this.chosenDate = 0
             this.chosenTime = 0
@@ -59,9 +59,13 @@ export default {
     <services-list :services="services"
       :chosen-services="chosenServices"
         @change-service="changeChosenServices"/>
-    <date-list/>
-    <time-list/>
-    <book-button/>
+    <date-list :dates="dates"
+    :chosen-date="chosenDate"
+    @set-date="setChosenDate"/>
+    <time-list :times="times"
+    :chosen-time="chosenTime"
+    @set-time="setChosenTime"/>
+    <book-button @book="book"/>
     </form>
 </template>
 

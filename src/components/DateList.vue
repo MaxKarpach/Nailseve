@@ -1,21 +1,17 @@
 <script lang="ts">
 import type { IDate } from '../models/date'
 export default {
-    data() {
-        return {
-            dates: [
-                { id: 1, date: '11.08' }, { id: 2, date: '12.08' }, { id: 3, date: '13.08' },
-                { id: 4, date: '14.08' }, { id: 5, date: '15.08' }, { id: 6, date: '16.08' },
-                { id: 7, date: '17.08' }, { id: 8, date: '18.08' }, { id: 9, date: '19.08'}                  
-            ] as IDate[],
-            chosenDate: 0 as number
-        }
+    props: {
+    dates: {
+      type: Array as () => IDate[],
+      required: true
     },
-    methods: {
-        setChosenDate(dateId: number): void {
-            this.chosenDate = this.chosenDate === dateId ? 0 : dateId
-        }
+    chosenDate: {
+      type: Number,
+      required: true
     }
+  },
+emits: ['set-date']
 }
 </script>
 
@@ -25,7 +21,8 @@ export default {
             Выберите дату
         </p>
         <div class="date__container">
-            <div class="date__container__item"  v-for="date in dates" :key="date.id" v-on:click="setChosenDate(date.id)"
+            <div class="date__container__item"  v-for="date in dates" :key="date.id"
+              @click="$emit('set-date', date.id)"
             :class="{ active: chosenDate === date.id }">
                 {{date.date}}
             </div>

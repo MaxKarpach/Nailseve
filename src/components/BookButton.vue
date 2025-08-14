@@ -1,24 +1,11 @@
 <script lang="ts">
 export default {
-    data() {
-        return {
-            chosenServices: [] as number[],
-            chosenDate: 0 as number,
-            chosenTime: 0 as number
-        }
-    },
-    methods: {
-        book() : void {
-            this.chosenServices = []
-            this.chosenDate = 0
-            this.chosenTime = 0
-        },
-    }
+    emits: ['book']
 }
 </script>
 
 <template>
-    <button v-on:click="book()">
+    <button @click="$emit('book')">
         Записаться
     </button>
 </template>
