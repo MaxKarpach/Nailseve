@@ -1,10 +1,10 @@
 <script lang="ts">
-import PortfolioItem from '../components/Portfoliolist.vue';
+import Portfoliolist from '../components/PortfolioList.vue';
 import type { IPortfolioItem } from '../models/portfolioItem';
 
 export default {
   components: {
-    PortfolioItem
+    Portfoliolist
   },
   data() {
     return {
@@ -20,7 +20,7 @@ export default {
 
 <template>
     <div class="portfolio">
-      <portfolio-item/>
+      <portfoliolist :works="works"/>
     </div>
 </template>
 
