@@ -1,6 +1,10 @@
 <script lang="ts">
 import type { IDate } from '../models/date'
+import DateItem from './DateItem.vue';
 export default {
+  components: {
+      DateItem
+    },
     props: {
     dates: {
       type: Array as () => IDate[],
@@ -17,16 +21,10 @@ emits: ['set-date']
 
 <template>
     <div class="date">
-        <p class="date__title">
-            Выберите дату
-        </p>
-        <div class="date__container">
-            <div class="date__container__item"  v-for="date in dates" :key="date.id"
-              @click="$emit('set-date', date.id)"
-            :class="{ active: chosenDate === date.id }">
-                {{date.date}}
-            </div>
-        </div>
+      <date-item :dates="dates"
+      :chosen-date="chosenDate"
+      @set-date="$emit('set-date', $event)"
+      />
     </div>
 </template>
 
@@ -38,31 +36,6 @@ emits: ['set-date']
     border: 1px solid teal;
     border-radius: 7px;
     padding: 10px 0 10px 10px;
-    &__title{
-        font-size: 20px;
-    }
-    &__container{
-    margin-top: 20px;
-    display: grid;
-    grid-template-columns: 70px 70px 70px 70px 70px 70px;
-    grid-template-rows: auto auto;
-    gap: 10px;
-    &__item{
-        cursor: pointer;
-        border: 1px solid teal;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        border-radius: 7px;
-        width: 70px;
-        height: 30px;
-        &.active {
-        background-color: teal;
-        color: white;
-        border-color: teal;
-      }
-    }
-    }
 }
 
 </style>

@@ -19,18 +19,8 @@ export default {
 </script>
 
 <template>
-    <div class="portfolio">
       <portfoliolist :works="works"/>
-    </div>
 </template>
 
 <style scoped lang="scss">
-  .portfolio{
-    width: 1300px;
-    margin-top: 80px;
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: auto auto auto;
-    gap: 20px;
-  }
 </style>

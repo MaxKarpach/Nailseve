@@ -36,7 +36,7 @@ export default {
         changeChosenServices(itemId: number): void {
         this.chosenServices.includes(itemId)
         ? this.chosenServices = this.chosenServices.filter(id => id !== itemId)
-        : this.chosenServices.push(itemId)
+            : this.chosenServices.push(itemId)
         },
         setChosenDate(dateId: number): void {
             this.chosenDate = this.chosenDate === dateId ? 0 : dateId
