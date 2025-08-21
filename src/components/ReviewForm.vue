@@ -1,21 +1,45 @@
 <script lang="ts">
+import { ref } from 'vue'
 import type { IReview } from '../models/review'
 
 export default {
-    emits: ['send-review']
+  emits: ['send-review'],
+  setup(_, { emit }) {
+    const name = ref('')
+    const mark = ref<number | null>(null)
+    const text = ref('')
+
+    const submit = () => {
+      if (!name.value || !mark.value || !text.value) return
+      const newReview: IReview = {
+        id: 0, // временно, бэк вернет реальный id
+        name: name.value,
+        mark: mark.value,
+        text: text.value
+      }
+      emit('send-review', newReview)
+
+      // очистим форму
+      name.value = ''
+      mark.value = null
+      text.value = ''
+    }
+
+    return { name, mark, text, submit }
+  }
 }
 </script>
 
 <template>
-    <form class="add" @submit.prevent>
-        <input type="text" class="add__name" placeholder="Ваше имя"/>
-        <input type="text" class="add__rating" placeholder="Оценка(1-5)"/>
-        <textarea name="add__text" id="" class="add__text" placeholder="Комментарий"></textarea>
-        <button @click="$emit('send-review')" class="add__button">
-            Отправить
-        </button>
-    </form>
+  <form class="add" @submit.prevent="submit">
+    <input v-model="name" type="text" class="add__name" placeholder="Ваше имя"/>
+    <input v-model.number="mark" type="number" class="add__rating" placeholder="Оценка(1-5)" min="1" max="5"/>
+    <textarea v-model="text" class="add__text" placeholder="Комментарий"></textarea>
+    <button type="submit" class="add__button">Отправить</button>
+  </form>
 </template>
+
+
 
 <style scoped lang="scss">
   .add{
