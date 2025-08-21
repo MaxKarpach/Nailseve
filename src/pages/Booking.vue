@@ -40,7 +40,7 @@ export default {
         },
         async loadTimes(): Promise<void> {
           try {
-              const response = await axios.get<ITime[]>('http://localhost:8000/api/times')
+              const response = await axios.get<ITime[]>('http://localhost:8000/api/freeTimes')
               this.times = response.data
           } catch (error) {
               console.error('Ошибка загрузки времени:', error)
