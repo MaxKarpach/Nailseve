@@ -23,7 +23,8 @@ emits: ['set-time']
             <div class="date__container__item"  v-for="time in times" :key="time.id"
               @click="$emit('set-time', time.id)"            
             :class="{ active: chosenTime === time.id }">
-                {{time.time}}, {{ time.date }}
+                <p class="date__container__item__date">{{time.date}}</p>
+                <p class="date__container__item__time">{{time.time}}</p>
         </div>
     </div>
 </template>
@@ -36,7 +37,7 @@ emits: ['set-time']
 .date__container{
     margin-top: 20px;
     display: grid;
-    grid-template-columns: 70px 70px 70px 70px 70px 70px;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
     grid-template-rows: auto auto;
     gap: 10px;
     &__item{
@@ -46,8 +47,9 @@ emits: ['set-time']
         justify-content: center;
         align-items: center;
         border-radius: 7px;
-        width: 70px;
-        height: 30px;
+        width: 80px;
+        height: 40px;
+        flex-direction: column;
         &.active {
         background-color: teal;
         color: white;

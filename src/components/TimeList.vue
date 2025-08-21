@@ -1,5 +1,5 @@
 <script lang="ts">
-import type { IDate } from '../models/time'
+import type { ITime } from '../models/time'
 import TimeItem from './TimeItem.vue';
 export default {
   components: {
@@ -7,7 +7,7 @@ export default {
     },
     props: {
     times: {
-      type: Array as () => IDate[],
+      type: Array as () => ITime[],
       required: true
     },
     chosenTime: {
@@ -30,7 +30,7 @@ emits: ['set-time']
 <style scoped lang="scss">
 
 .date{
-    width: 500px;
+    width: 700px;
     margin-top: 80px;
     border: 1px solid teal;
     border-radius: 7px;
