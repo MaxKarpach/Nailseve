@@ -2,6 +2,7 @@
 import ReviewForm from '../components/ReviewForm.vue'
 import ReviewList from '../components/ReviewList.vue'
 import type { IReview } from '../models/review'
+import axios from 'axios'
 
 export default {
     components: {
@@ -9,15 +10,29 @@ export default {
     },
     data() {
         return {
-            reviews: [
-                {id: 1, name: 'Коля Валуев', mark: 5, text: 'Пришла в салон впервые по рекомендации подруги и осталась в полном восторге! Мастер Катерина — настоящий профессионал: аккуратная, внимательная к деталям и с отличным чувством стиля.'}
-            ] as IReview[]
+            reviews: [] as IReview[]
         }
     },
     methods: {
-        sendReview(): void {
-
+        async loadReviews(): Promise<void> {
+            try {
+                const response = await axios.get<IReview[]>('http://localhost:8000/api/reviews')
+                this.reviews = response.data
+            } catch (error) {
+                console.error('Ошибка загрузки отзывов:', error)
+            }
+        },
+        async sendReview(newReview: IReview): Promise<void> {
+            try {
+                const response = await axios.post<IReview>('http://localhost:8000/api/reviews', newReview)
+                this.reviews.push(response.data)
+            } catch (error) {
+                console.error('Ошибка отправки отзыва:', error)
+            }
         }
+    },
+    mounted() {
+        this.loadReviews()
     }
 }
 </script>
@@ -26,6 +41,3 @@ export default {
     <review-form @send-review="sendReview"/>
     <review-list :reviews="reviews"/>
 </template>
-
-<style scoped lang="scss">
-</style>

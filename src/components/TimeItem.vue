@@ -1,9 +1,9 @@
 <script lang="ts">
-import type { IDate } from '../models/date'
+import type { ITime } from '../models/time'
 export default {
     props: {
     times: {
-      type: Array as () => IDate[],
+      type: Array as () => ITime[],
       required: true
     },
     chosenTime: {
@@ -23,7 +23,7 @@ emits: ['set-time']
             <div class="date__container__item"  v-for="time in times" :key="time.id"
               @click="$emit('set-time', time.id)"            
             :class="{ active: chosenTime === time.id }">
-                {{time.date}}
+                {{time.time}}, {{ time.date }}
         </div>
     </div>
 </template>

@@ -21,13 +21,13 @@ emits: ['change-service']
             <div class="services__item-container">
                <div class="services__item-container__info"  v-for="item in service.items" :key="item.id">
                 <div class="services__item-container__info__info">
-                    <div class="services__item-container__info__info__name">{{item.title}}</div>
+                    <div class="services__item-container__info__info__name">{{item.text}}</div>
                     <div class="services__item-container__info__info__price">{{item.price}} ₽</div>
                 </div>
-<div 
-  class="services__item-container__info__checkbox"
-  @click="$emit('change-service', item.id)"
->
+        <div 
+        class="services__item-container__info__checkbox"
+        @click="$emit('change-service', item.id)"
+        >
                 <img v-show="chosenServices.includes(item.id)" class="services__item-container__info__checkbox__img" src="/src/assets/check.png" alt="">
                 </div>
                 </div>   

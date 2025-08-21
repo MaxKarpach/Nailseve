@@ -1,5 +1,5 @@
 <script lang="ts">
-import type { IDate } from '../models/date'
+import type { IDate } from '../models/time'
 import TimeItem from './TimeItem.vue';
 export default {
   components: {

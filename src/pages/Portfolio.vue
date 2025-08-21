@@ -1,6 +1,7 @@
 <script lang="ts">
 import Portfoliolist from '../components/PortfolioList.vue';
 import type { IPortfolioItem } from '../models/portfolioItem';
+import axios from 'axios'
 
 export default {
   components: {
@@ -8,13 +9,22 @@ export default {
   },
   data() {
     return {
-      works: [
-        { id: 1, img: '/src/assets/n1.jpg', price: 500, description: [{ id: 1, text: 'Повседневный' }, { id: 2, text: 'French' }] },
-        { id: 2, img: '/src/assets/n2.jpg', price: 300, description: [{ id: 3, text: 'Летний' }, { id: 4, text: 'Минимализм' }] },
-        { id: 3, img: '/src/assets/n3.jpg', price: 1000, description: [{ id: 3, text: 'Летний' }, { id: 5, text: 'Худ. роспись' }] }                
-      ] as IPortfolioItem[]
+      works: [ ] as IPortfolioItem[]
     }
-  }
+  },
+  methods: {
+      async loadWorks(): Promise<void> {
+          try {
+              const response = await axios.get<IPortfolioItem[]>('http://localhost:8000/api/worksWithDescriptions')
+              this.works = response.data
+          } catch (error) {
+              console.error('Ошибка загрузки работ:', error)
+          }
+      }
+    },
+    mounted() {
+        this.loadWorks()
+    }  
 }
 </script>
 
