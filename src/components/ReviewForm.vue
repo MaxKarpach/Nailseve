@@ -12,14 +12,13 @@ export default {
     const submit = () => {
       if (!name.value || !mark.value || !text.value) return
       const newReview: IReview = {
-        id: 0, // временно, бэк вернет реальный id
+        id: Math.floor(Math.random()),
         name: name.value,
         mark: mark.value,
         text: text.value
       }
       emit('send-review', newReview)
 
-      // очистим форму
       name.value = ''
       mark.value = null
       text.value = ''

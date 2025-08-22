@@ -16,7 +16,7 @@ export default {
       async loadWorks(): Promise<void> {
           try {
               const response = await axios.get<IPortfolioItem[]>('http://localhost:8000/api/worksWithDescriptions')
-              this.works = response.data
+            this.works = response.data
           } catch (error) {
               console.error('Ошибка загрузки работ:', error)
           }

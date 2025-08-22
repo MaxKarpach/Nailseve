@@ -18,7 +18,7 @@ export default {
                 Цена: {{ work.price }} ₽
             </div>
             <div class="portfolio__item__description">
-              <div class="portfolio__item__description__button" v-for="descr in work.description" :key="descr.id">
+              <div class="portfolio__item__description__button" v-for="descr in work.descriptions" :key="descr.id">
                 {{descr.text}}
               </div>
             </div>

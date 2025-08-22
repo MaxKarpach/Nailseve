@@ -26,9 +26,26 @@ export default {
         setChosenTime(timeId: number): void {
             this.chosenTime = this.chosenTime === timeId ? 0 : timeId
         },
-        book(): void {
-            this.chosenServices = []
+        async book(): Promise<void> {
+           if (this.chosenTime === 0 || this.chosenServices.length === 0) {
+             alert('Выберите время и хотя бы одну услугу')
+             return
+            }
+
+          try {
+            await axios.post('http://localhost:8000/api/records', {
+            time_id: this.chosenTime,
+            items: this.chosenServices
+            })
+            alert('Вы успешно записались!')
+
+              this.chosenServices = []
+            this.times = this.times.filter(time => time.id != this.chosenTime)
             this.chosenTime = 0
+           } catch (error) {
+           console.error('Ошибка записи:', error)
+            alert('Не удалось записаться, попробуйте позже')
+           }
         },
         async loadServices(): Promise<void> {
           try {
